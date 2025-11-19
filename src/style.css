@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  color: #f5f6fa;
+  background-color: #05060a;
+  font-weight: 400;
+  line-height: 1.4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(96, 99, 255, 0.1), transparent 55%),
+    #05060a;
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.app-container {
+  width: min(1150px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0.25rem 0;
+}
+
+.subtitle {
+  color: #b8b9c5;
+  margin-top: 0.35rem;
+}
+
+.tag {
+  display: inline-flex;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7c7dfa;
+}
+
+.timezone-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #cdd0d8;
+}
+
+.timezone-selector select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  color: inherit;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.timezone-selector select:focus-visible {
+  border-color: #7c7dfa;
+}
+
+.status-card {
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cdd0d8;
+}
+
+.status-card.error {
+  border-color: rgba(255, 77, 94, 0.6);
+  color: #ff4d5e;
+}
+
+.highlight-card {
+  background: linear-gradient(135deg, rgba(124, 125, 250, 0.2), rgba(10, 11, 26, 0.9));
+  border-radius: 28px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px rgba(5, 6, 10, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.highlight-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.highlight-header h2 {
+  margin: 0.2rem 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.location {
+  color: #b8b9c5;
+  margin: 0;
+}
+
+.session-meta {
+  text-align: right;
+  font-size: 1rem;
+  color: #e2e3f3;
+}
+
+.session-meta p {
+  margin: 0;
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.countdown-label {
+  font-size: 0.9rem;
+  color: #b0b3c7;
+  margin: 0;
+}
+
+.countdown-values {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.countdown-values.compact {
+  gap: 0.25rem;
+}
+
+.countdown-values div {
+  background: rgba(8, 11, 24, 0.7);
+  border-radius: 16px;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.countdown-values.compact div {
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+}
+
+.countdown .value {
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-weight: 600;
+  display: block;
+}
+
+.countdown .unit {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8f92a9;
+}
+
+.countdown.compact .value {
+  font-size: 1.1rem;
+}
+
+.countdown.compact .unit {
+  font-size: 0.65rem;
+}
+
+.countdown-placeholder {
+  margin: 0;
+  color: #8f92a9;
+}
+
+.session-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.session-card {
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(8, 10, 22, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.session-active {
+  border-color: rgba(124, 125, 250, 0.8);
+  box-shadow: 0 15px 35px rgba(124, 125, 250, 0.15);
+}
+
+.session-title {
+  font-weight: 600;
+}
+
+.session-time {
+  color: #cdd0d8;
+  font-size: 0.9rem;
+}
+
+.list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.section-heading h3 {
+  margin: 0;
+}
+
+.section-heading p {
+  margin: 0.3rem 0 0;
+  color: #9ca0b8;
+}
+
+.race-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.race-card {
+  padding: 1.3rem;
+  border-radius: 22px;
+  background: rgba(9, 12, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.race-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.race-card-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.race-dates {
+  color: #9ca0b8;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.race-card-countdown {
+  margin-top: auto;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 1.25rem;
+  }
+
+  .highlight-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .session-meta {
+    text-align: left;
+  }
+}
