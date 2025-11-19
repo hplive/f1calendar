@@ -49,12 +49,12 @@ interface ErgastRace {
 }
 
 const sessionMap = [
-  { key: 'FirstPractice', type: 'FP1', label: 'Treino Livre 1' },
-  { key: 'SecondPractice', type: 'FP2', label: 'Treino Livre 2' },
-  { key: 'ThirdPractice', type: 'FP3', label: 'Treino Livre 3' },
-  { key: 'Qualifying', type: 'QUALIFYING', label: 'Qualificação' },
+  { key: 'FirstPractice', type: 'FP1', label: 'Free Practice 1' },
+  { key: 'SecondPractice', type: 'FP2', label: 'Free Practice 2' },
+  { key: 'ThirdPractice', type: 'FP3', label: 'Free Practice 3' },
+  { key: 'Qualifying', type: 'QUALIFYING', label: 'Qualifying' },
   { key: 'Sprint', type: 'SPRINT', label: 'Sprint' },
-  { key: 'Race', type: 'RACE', label: 'Corrida' },
+  { key: 'Race', type: 'RACE', label: 'Grand Prix' },
 ] as const;
 
 const buildDate = (date: string, time?: string) => {
@@ -105,14 +105,14 @@ export const fetchCurrentSeason = async (): Promise<RaceWeekend[]> => {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error(`Resposta inválida da API (${response.status})`);
+        throw new Error(`Invalid API response (${response.status})`);
       }
       const data = (await response.json()) as {
         MRData?: { RaceTable?: { Races?: ErgastRace[] } };
       };
       const races = data?.MRData?.RaceTable?.Races ?? [];
       if (!races.length) {
-        throw new Error('Calendário indisponível');
+        throw new Error('Calendar unavailable');
       }
       return races.map(mapRace);
     } catch (error) {
@@ -120,5 +120,5 @@ export const fetchCurrentSeason = async (): Promise<RaceWeekend[]> => {
     }
   }
 
-  throw lastError ?? new Error('Não foi possível carregar o calendário da F1');
+  throw lastError ?? new Error('Unable to load the F1 calendar');
 };

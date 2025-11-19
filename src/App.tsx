@@ -66,7 +66,7 @@ function App() {
         setRaces(season);
       } catch (err) {
         console.error(err);
-        setError('Não foi possível carregar o calendário da F1.');
+        setError('Failed to load the F1 calendar.');
       } finally {
         setLoading(false);
       }
@@ -95,14 +95,11 @@ function App() {
       <main className="app-container">
         <header className="app-header">
           <div>
-            <p className="tag">Fórmula 1 • Temporada Atual</p>
-            <h1>Próximo fim-de-semana de F1</h1>
-            <p className="subtitle">
-              Countdown em tempo real para todas as sessões oficiais.
-            </p>
+            <p className="tag">Formula 1 / Live schedule</p>
+            <p className="subtitle">Next race weekend in your timezone.</p>
           </div>
           <label className="timezone-selector">
-            <span>Zona horária</span>
+            <span>Timezone</span>
             <select value={timezone} onChange={(event) => setTimezone(event.target.value)}>
               {timezoneOptions.map((zone) => (
                 <option key={zone} value={zone}>
@@ -113,14 +110,14 @@ function App() {
           </label>
         </header>
 
-        {loading && <div className="status-card">A carregar calendário...</div>}
+        {loading && <div className="status-card">Loading race calendar...</div>}
         {!loading && error && <div className="status-card error">{error}</div>}
 
         {!loading && !error && nextSession && (
           <section className="highlight-card">
             <div className="highlight-header">
               <div>
-                <p className="tag">Próxima sessão</p>
+                <p className="tag">On the horizon</p>
                 <h2>{nextSession.race.raceName}</h2>
                 <p className="location">
                   {nextSession.race.locality}, {nextSession.race.country}
@@ -131,7 +128,7 @@ function App() {
                 <p>{formatSessionDate(nextSession.start, timezone)}</p>
               </div>
             </div>
-            <Countdown targetDate={nextSession.start} label="Tempo restante" variant="large" />
+            <Countdown targetDate={nextSession.start} label="Time remaining" variant="large" />
             <div className="session-grid">
               {upcomingSessionsForRace.map((session) => (
                 <div
@@ -152,8 +149,8 @@ function App() {
         {!loading && !error && (
           <section className="list-section">
             <div className="section-heading">
-              <h3>Corridas seguintes</h3>
-              <p>Calendário completo do resto da temporada.</p>
+              <h3>Upcoming Grands Prix</h3>
+              <p>The remaining rounds of the season.</p>
             </div>
             <RaceList races={upcomingRaces} timezone={timezone} />
           </section>

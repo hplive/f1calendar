@@ -14,10 +14,10 @@ const Countdown = ({ targetDate, label, variant = 'large' }: CountdownProps) => 
   const { days, hours, minutes, seconds, isPast, progress } = useCountdown(targetDate);
 
   const units = [
-    { key: 'days', label: 'Dias', short: 'D', value: days, progress: progress.days ?? 0 },
-    { key: 'hours', label: 'Horas', short: 'H', value: hours, progress: progress.hours ?? 0 },
-    { key: 'minutes', label: 'Minutos', short: 'M', value: minutes, progress: progress.minutes ?? 0 },
-    { key: 'seconds', label: 'Segundos', short: 'S', value: seconds, progress: progress.seconds ?? 0 },
+    { key: 'days', label: 'Days', short: 'D', value: days, progress: progress.days ?? 0 },
+    { key: 'hours', label: 'Hours', short: 'H', value: hours, progress: progress.hours ?? 0 },
+    { key: 'minutes', label: 'Minutes', short: 'M', value: minutes, progress: progress.minutes ?? 0 },
+    { key: 'seconds', label: 'Seconds', short: 'S', value: seconds, progress: progress.seconds ?? 0 },
   ];
 
   const content = targetDate ? (
@@ -45,7 +45,7 @@ const Countdown = ({ targetDate, label, variant = 'large' }: CountdownProps) => 
     <p className="countdown-placeholder">Sem data</p>
   );
 
-  const statusText = !targetDate ? 'Sem data definida' : isPast ? 'Já começou' : label ?? 'Countdown';
+  const statusText = !targetDate ? 'No date available' : isPast ? 'Already started' : label ?? 'Countdown';
 
   return (
     <div className={`countdown ${variant}`}>

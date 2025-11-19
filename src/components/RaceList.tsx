@@ -8,7 +8,7 @@ interface RaceListProps {
 
 const RaceList = ({ races, timezone }: RaceListProps) => {
   if (!races.length) {
-    return <p className="status-card">Sem mais corridas agendadas.</p>;
+    return <p className="status-card">No more races scheduled.</p>;
   }
 
   const rangeFormatter = new Intl.DateTimeFormat('pt-PT', {
@@ -26,7 +26,7 @@ const RaceList = ({ races, timezone }: RaceListProps) => {
           <article key={race.id} className="race-card">
             <div className="race-card-header">
               <div>
-                <p className="tag">Ronda {race.round}</p>
+                <p className="tag">Round {race.round}</p>
                 <h4>{race.raceName}</h4>
                 <p className="location">
                   {race.locality}, {race.country}
@@ -37,7 +37,7 @@ const RaceList = ({ races, timezone }: RaceListProps) => {
               </p>
             </div>
             <div className="race-card-countdown">
-              <Countdown targetDate={firstSession.start} variant="compact" label="Início em" />
+              <Countdown targetDate={firstSession.start} variant="compact" label="Starts in" />
             </div>
           </article>
         );
